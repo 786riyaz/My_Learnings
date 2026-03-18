@@ -1,0 +1,8 @@
+npx prisma db push
+
+docker compose up db
+
+
+docker exec -it whatsapp-db psql -U postgres -d chat
+
+

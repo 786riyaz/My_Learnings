@@ -1,0 +1,226 @@
+Below is a **clean, complete command reference** for Microsoft Dev Tunnel usage from CMD. This is structured like a quick internal doc so you can reuse it anytime.
+
+---
+
+# 📘 Dev Tunnel CLI – Complete Command Guide
+
+---
+
+# 🧰 1. Installation
+
+```bash
+winget install Microsoft.devtunnel
+```
+
+Verify:
+
+```bash
+devtunnel --version
+```
+
+---
+
+# 🔐 2. Authentication
+
+```bash
+devtunnel login
+```
+
+Logout:
+
+```bash
+devtunnel logout
+```
+
+---
+
+# 🌐 3. Create Tunnel
+
+### Create public tunnel (anonymous access)
+
+```bash
+devtunnel create --allow-anonymous
+```
+
+### Create private tunnel (recommended for secure apps)
+
+```bash
+devtunnel create
+```
+
+---
+
+# 📋 4. List Tunnels
+
+```bash
+devtunnel list
+```
+
+---
+
+# 🔍 5. Inspect Tunnel Details
+
+```bash
+devtunnel show <tunnel-id>
+```
+
+---
+
+# 🚪 6. Add / Manage Ports
+
+### Add port (e.g., 3000)
+
+```bash
+devtunnel port create -p 3000
+```
+
+### Add multiple ports
+
+```bash
+devtunnel port create -p 3000
+devtunnel port create -p 3001
+```
+
+### List ports
+
+```bash
+devtunnel port list
+```
+
+### Delete a port
+
+```bash
+devtunnel port delete -p 3000
+```
+
+---
+
+# ▶️ 7. Start / Host Tunnel
+
+```bash
+devtunnel host
+```
+
+👉 This exposes all configured ports
+
+---
+
+# ⛔ 8. Stop Tunnel
+
+```bash
+Ctrl + C
+```
+
+---
+
+# 🗑️ 9. Delete Tunnel (Full Cleanup)
+
+```bash
+devtunnel delete <tunnel-id>
+```
+
+---
+
+# 🔒 10. Access Control (Important for Your Use Case)
+
+### Allow anonymous (public)
+
+```bash
+devtunnel create --allow-anonymous
+```
+
+### Remove anonymous access (secure)
+
+```bash
+devtunnel update <tunnel-id> --allow-anonymous false
+```
+
+---
+
+# 🔄 11. Reuse Existing Tunnel
+
+Instead of creating new:
+
+```bash
+devtunnel host <tunnel-id>
+```
+
+---
+
+# ⚡ 12. One-Line Quick Start (Public Tunnel)
+
+```bash
+devtunnel create --allow-anonymous && devtunnel port create -p 3000 && devtunnel host
+```
+
+---
+
+# 🧪 13. Debug / Troubleshooting
+
+### Check active tunnels
+
+```bash
+devtunnel list
+```
+
+### Check ports
+
+```bash
+devtunnel port list
+```
+
+### Restart cleanly
+
+```bash
+devtunnel delete <tunnel-id>
+devtunnel create --allow-anonymous
+```
+
+---
+
+# 🧠 Best Practices (Based on Your Project)
+
+Since you're building:
+
+* Public app (Next.js)
+* Admin verification system
+* Sensitive images
+
+👉 Use this strategy:
+
+### Public App
+
+```bash
+devtunnel create --allow-anonymous
+```
+
+### Admin App (secure)
+
+```bash
+devtunnel create
+```
+
+---
+
+# 🔥 Recommended Workflow
+
+```bash
+# 1. Login
+devtunnel login
+
+# 2. Create tunnel
+devtunnel create --allow-anonymous
+
+# 3. Add port
+devtunnel port create -p 3000
+
+# 4. Start
+devtunnel host
+
+# 5. Stop when done
+Ctrl + C
+
+# 6. Cleanup
+devtunnel delete <tunnel-id>
+```
+
